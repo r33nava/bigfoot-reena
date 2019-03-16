@@ -52,7 +52,7 @@ def data():
     results = db.session.query(*sel).\
         group_by(func.strftime("%Y", Bigfoot.timestamp)).all()
     df = pd.DataFrame(results, columns=['year','sightings'])
-    return jsonify(df.to_dict())
+    return jsonify(df.to_dict("records"))
 
 
 if __name__ == "__main__":
